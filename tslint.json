@@ -6,7 +6,8 @@
     "rules": {
         "indent": [true, "spaces", 4],
         "quotemark": [true, "single"],
-        "interface-name": false
+        "interface-name": false,
+        "jsdoc-format":false
     },
     "rulesDirectory": [],
     "linterOptions": {}
