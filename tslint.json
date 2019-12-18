@@ -1,0 +1,13 @@
+{
+    "defaultSeverity": "error",
+    "extends": [
+        "tslint:recommended"
+    ],
+    "rules": {
+        "indent": [true, "spaces", 4],
+        "quotemark": [true, "single"],
+        "interface-name": false
+    },
+    "rulesDirectory": [],
+    "linterOptions": {}
+}

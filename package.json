@@ -4,7 +4,8 @@
   "description": "Source code of the webOSTV.js library",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "tslint": "tslint -p ./tsconfig.json *.ts"
   },
   "repository": {
     "type": "git",
@@ -27,5 +28,9 @@
   "bugs": {
     "url": "https://github.com/procot/webostv/issues"
   },
-  "homepage": "https://github.com/procot/webostv#readme"
+  "homepage": "https://github.com/procot/webostv#readme",
+  "devDependencies": {
+    "tslint": "^5.20.1",
+    "typescript": "^3.7.3"
+  }
 }
