@@ -1,0 +1,31 @@
+{
+  "name": "webostv",
+  "version": "0.0.1",
+  "description": "Source code of the webOSTV.js library",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/procot/webostv.git"
+  },
+  "keywords": [
+    "webOSTV.js",
+    "webOSTV",
+    "webostv",
+    "webos",
+    "webOS",
+    "webosdev",
+    "webOSDev"
+  ],
+  "author": {
+    "name": "Ilya Istomin",
+    "email": "ilyaistomin9817@gmail.com"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/procot/webostv/issues"
+  },
+  "homepage": "https://github.com/procot/webostv#readme"
+}
