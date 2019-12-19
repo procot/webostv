@@ -1,0 +1,7 @@
+node_modules
+.npmignore
+.gitignore
+tslint.json
+package-lock.json
+webOS-tests.ts
+webOSDev-tests.ts

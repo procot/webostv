@@ -692,6 +692,6 @@ declare namespace WebOSTV {
 declare var webOS: WebOSTV.WebOS;
 declare var webOSDev: WebOSTV.WebOSDev;
 
-declare module 'webostv' {
+declare module '@procot/webostv' {
     export = WebOSTV;
 }

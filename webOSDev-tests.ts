@@ -1,4 +1,4 @@
-import { WiredStatus, WifiStatus, WifiDirectStatus, WifiPeerInfo, DRMAgent } from 'webostv';
+import { WiredStatus, WifiStatus, WifiDirectStatus, WifiPeerInfo, DRMAgent } from '@procot/webostv';
 
 function test_APP_BROWSER() {
     console.log(webOSDev.APP.BROWSER);
