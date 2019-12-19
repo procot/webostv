@@ -1,14 +1,9 @@
 {
-    "defaultSeverity": "error",
-    "extends": [
-        "tslint:recommended"
-    ],
+    "extends": "dtslint/dtslint.json",
     "rules": {
+        "semicolon": false,
         "indent": [true, "spaces", 4],
-        "quotemark": [true, "single"],
-        "interface-name": false,
-        "jsdoc-format":false
-    },
-    "rulesDirectory": [],
-    "linterOptions": {}
+        "no-single-declare-module": false,
+        "quotemark": [true, "single"]
+    }
 }
