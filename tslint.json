@@ -5,5 +5,11 @@
         "indent": [true, "spaces", 4],
         "no-single-declare-module": false,
         "quotemark": [true, "single"]
+    },
+    "linterOptions": {
+        "exclude": [
+            "node_modules",
+            "*.js"
+        ]
     }
 }

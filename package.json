@@ -7,7 +7,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "npm run tslint && npm run dtslint",
-    "tslint": "tslint -e node_modules -p ./tsconfig.json *.d.ts",
+    "tslint": "tslint -p ./tsconfig.json *.ts",
     "dtslint": "dtslint ."
   },
   "repository": {

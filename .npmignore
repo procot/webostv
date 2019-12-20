@@ -2,6 +2,9 @@ node_modules
 .npmignore
 .gitignore
 tslint.json
+tsconfig.json
 package-lock.json
+
+# tests
 webOS-tests.ts
 webOSDev-tests.ts
