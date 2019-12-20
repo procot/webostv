@@ -1,0 +1,10 @@
+node_modules
+.npmignore
+.gitignore
+tslint.json
+tsconfig.json
+package-lock.json
+
+# tests
+webOSTV/webOS-tests.ts
+webOSTV-dev/webOSDev-tests.ts

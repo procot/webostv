@@ -1,0 +1,16 @@
+{
+    "extends": "dtslint/dtslint.json",
+    "rules": {
+        "semicolon": false,
+        "indent": [true, "spaces", 4],
+        "no-single-declare-module": false,
+        "quotemark": [true, "single"],
+        "no-bad-reference": false
+    },
+    "linterOptions": {
+        "exclude": [
+            "node_modules",
+            "**/*.js"
+        ]
+    }
+}
