@@ -1,5 +1,3 @@
-import { WiredStatus, WifiStatus, WifiDirectStatus, WifiPeerInfo, DRMAgent } from '@procot/webostv';
-
 function test_APP_BROWSER() {
     console.log(webOSDev.APP.BROWSER);
 }
@@ -159,12 +157,12 @@ function test_connection_getStatus_wifi(wifiStatus: WifiStatus) {
 
 function test_connection_getStatus_wifiDirect(wifiDirectStatus: WifiDirectStatus) {
     const { connectedPeers = [] } = wifiDirectStatus;
-    connectedPeers.forEach(test_connection_getStatus_wifiDirect_WifiPeers);
+    connectedPeers.forEach(test_connection_getStatus_wifiDirect_WifiPeer);
     console.log(wifiDirectStatus.localIp);
     console.log(wifiDirectStatus.state);
 }
 
-function test_connection_getStatus_wifiDirect_WifiPeers(wifiPeerInfo: WifiPeerInfo) {
+function test_connection_getStatus_wifiDirect_WifiPeer(wifiPeerInfo: WifiPeerInfo) {
     console.log(wifiPeerInfo.configMethod);
     console.log(wifiPeerInfo.connected);
     console.log(wifiPeerInfo.deviceAddress);
@@ -174,7 +172,14 @@ function test_connection_getStatus_wifiDirect_WifiPeers(wifiPeerInfo: WifiPeerIn
     console.log(wifiPeerInfo.peerIp);
     console.log(wifiPeerInfo.serviceDiscoveryResponse);
     console.log(wifiPeerInfo.signalLevel);
-    console.log(wifiPeerInfo.wfdInfo);
+    wifiPeerInfo.wfdInfo && test_connection_getStatus_wifiDirect_WifiPeer_wfdInfo(wifiPeerInfo.wfdInfo);
+}
+
+function test_connection_getStatus_wifiDirect_WifiPeer_wfdInfo(wfdInfo: WifiWfdInfo) {
+    console.log(wfdInfo.wfdCpSupport);
+    console.log(wfdInfo.wfdDeviceType);
+    console.log(wfdInfo.wfdRtspPort);
+    console.log(wfdInfo.wfdSessionAvail);
 }
 
 function test_drmAgent_getClientId(drmAgent: DRMAgent) {

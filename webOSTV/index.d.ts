@@ -1,6 +1,5 @@
-/// <reference path="main.d.ts" />
 
-declare namespace WebOSTVLibrary.WebOSTV {
+// declare namespace WebOSTV {
     interface WebOS {
         /**
          * A member representing the build version of the webOSTV.js library
@@ -190,6 +189,6 @@ declare namespace WebOSTVLibrary.WebOSTV {
          */
         timezone?: string;
     }
-}
+// }
 
-declare var webOS: WebOSTVLibrary.WebOSTV.WebOS;
+declare var webOS: WebOS;

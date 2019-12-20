@@ -1,4 +1,4 @@
-import './webOSTV';
-import './webOSTV-dev';
+/// <reference path="./webOSTV/index.d.ts" />
+/// <reference path="./webOSTV-dev/index.d.ts" />
 
-export = WebOSTVLibrary;
+export {};

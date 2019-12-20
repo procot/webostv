@@ -1,10 +1,10 @@
-declare namespace WebOSTVLibrary {
+// declare namespace WebOSTVLibrary {
     /**
      * Make all properties in T optional
      */
-    type Partial<T> = {
-        [P in keyof T]?: T[P];
-    };
+    // type Partial<T> = {
+    //     [P in keyof T]?: T[P];
+    // };
 
     interface RequestParams<T> {
         onSuccess: (result: T) => any;
@@ -22,4 +22,4 @@ declare namespace WebOSTVLibrary {
     interface ObjectValue {
         [k: string]: any;
     }
-}
+// }

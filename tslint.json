@@ -9,7 +9,7 @@
     "linterOptions": {
         "exclude": [
             "node_modules",
-            "*.js"
+            "**/*.js"
         ]
     }
 }

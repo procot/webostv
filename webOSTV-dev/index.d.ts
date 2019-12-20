@@ -1,7 +1,10 @@
-/// <reference path="main.d.ts" />
+/// <reference path="../main.d.ts" />
 /// <reference path="drmAgent.d.ts" />
 
-declare namespace WebOSTVLibrary.WebOSTVDev {
+// import {RequestParams, ObjectValue} from "../main";
+// import {DRMAgent} from "./index";
+
+// declare namespace WebOSTVDev {
     interface WebOSDev {
         /**
          * A member representing the list of built-in apps on the webOS TV opened to external developers.
@@ -34,7 +37,7 @@ declare namespace WebOSTVLibrary.WebOSTVDev {
          * const drmType = webOSDevPromised.DRM.Type;
          * const drmAgent = webOSDevPromised.drmAgent(drmType);
          */
-        drmAgent(type: DRMType[keyof DRMType]): DRMAgent.DRMAgent;
+        drmAgent(type: DRMType[keyof DRMType]): DRMAgent;
         /**
          * Launches an application with parameters.
          * @param parameters The JSON object containing an app ID, parameters
@@ -378,7 +381,7 @@ declare namespace WebOSTVLibrary.WebOSTVDev {
          */
         id: string;
     }
-}
+// }
 
-declare var webOSDev: WebOSTVLibrary.WebOSTVDev.WebOSDev;
+declare var webOSDev: WebOSDev;
 

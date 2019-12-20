@@ -1,4 +1,4 @@
-declare namespace WebOSTVLibrary.WebOSTVDev.DRMAgent {
+// declare namespace WebOSTVDev.DRMAgent {
     interface DRMAgent {
         /**
          * Returns a client ID of DRM.
@@ -96,4 +96,4 @@ declare namespace WebOSTVLibrary.WebOSTVDev.DRMAgent {
          */
         resultMsg?: string;
     }
-}
+// }
