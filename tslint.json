@@ -4,7 +4,8 @@
         "semicolon": false,
         "indent": [true, "spaces", 4],
         "no-single-declare-module": false,
-        "quotemark": [true, "single"]
+        "quotemark": [true, "single"],
+        "no-bad-reference": false
     },
     "linterOptions": {
         "exclude": [

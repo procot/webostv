@@ -6,5 +6,5 @@ tsconfig.json
 package-lock.json
 
 # tests
-webOS-tests.ts
-webOSDev-tests.ts
+webOSTV/webOS-tests.ts
+webOSTV-dev/webOSDev-tests.ts
