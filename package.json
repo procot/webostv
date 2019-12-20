@@ -6,7 +6,6 @@
   "types": "index",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "npm run tslint && npm run dtslint",
     "tslint": "tslint -p ./tsconfig.json */*.ts"
   },
   "repository": {
