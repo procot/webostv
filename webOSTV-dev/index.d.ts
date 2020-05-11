@@ -378,4 +378,8 @@ interface LGUDIDResponse {
     id: string;
 }
 
+interface Window {
+    webOSDev: WebOSDev;
+}
+
 declare var webOSDev: WebOSDev;
