@@ -1,30 +1,30 @@
 (() => {
     function test_APP_BROWSER() {
-        console.log(webOSDev.APP.BROWSER);
+        console.log(window.webOSDev.APP.BROWSER);
     }
 
     function test_DRM_Error() {
-        console.log(webOSDev.DRM.Error.API_NOT_SUPPORTED);
-        console.log(webOSDev.DRM.Error.CLIENT_NOT_LOADED);
-        console.log(webOSDev.DRM.Error.DRM_TYPE_UNMATCHED);
-        console.log(webOSDev.DRM.Error.INVALID_KEY_FORMAT);
-        console.log(webOSDev.DRM.Error.INVALID_PARAMS);
-        console.log(webOSDev.DRM.Error.INVALID_TIME_INFO);
-        console.log(webOSDev.DRM.Error.KEY_NOT_FOUND);
-        console.log(webOSDev.DRM.Error.NOT_ERROR);
-        console.log(webOSDev.DRM.Error.UNKNOWN_ERROR);
-        console.log(webOSDev.DRM.Error.UNSUPPORTED_DRM_TYPE);
-        console.log(webOSDev.DRM.Error.VENDOR_ERROR);
-        console.log(webOSDev.DRM.Error.WRONG_CLIENT_ID);
+        console.log(window.webOSDev.DRM.Error.API_NOT_SUPPORTED);
+        console.log(window.webOSDev.DRM.Error.CLIENT_NOT_LOADED);
+        console.log(window.webOSDev.DRM.Error.DRM_TYPE_UNMATCHED);
+        console.log(window.webOSDev.DRM.Error.INVALID_KEY_FORMAT);
+        console.log(window.webOSDev.DRM.Error.INVALID_PARAMS);
+        console.log(window.webOSDev.DRM.Error.INVALID_TIME_INFO);
+        console.log(window.webOSDev.DRM.Error.KEY_NOT_FOUND);
+        console.log(window.webOSDev.DRM.Error.NOT_ERROR);
+        console.log(window.webOSDev.DRM.Error.UNKNOWN_ERROR);
+        console.log(window.webOSDev.DRM.Error.UNSUPPORTED_DRM_TYPE);
+        console.log(window.webOSDev.DRM.Error.VENDOR_ERROR);
+        console.log(window.webOSDev.DRM.Error.WRONG_CLIENT_ID);
     }
 
     function test_DRM_Type() {
-        console.log(webOSDev.DRM.Type.PLAYREADY);
-        console.log(webOSDev.DRM.Type.WIDEVINE);
+        console.log(window.webOSDev.DRM.Type.PLAYREADY);
+        console.log(window.webOSDev.DRM.Type.WIDEVINE);
     }
 
     function test_LGUDID() {
-        webOSDev.LGUDID({
+        window.webOSDev.LGUDID({
             onSuccess(res) {
                 console.log(res.id);
             },
@@ -36,7 +36,7 @@
     }
 
     function test_connection_getStatus() {
-        webOSDev.connection.getStatus({
+        window.webOSDev.connection.getStatus({
             subscribe: true,
             onSuccess(res) {
                 console.log(res.isInternetConnectionAvailable);
@@ -52,7 +52,7 @@
     }
 
     function test_drmAgent() {
-        const drmAgent = webOSDev.drmAgent(webOSDev.DRM.Type.PLAYREADY);
+        const drmAgent = window.webOSDev.drmAgent(window.webOSDev.DRM.Type.PLAYREADY);
         console.log(drmAgent.getClientId());
         console.log(drmAgent.getDrmType());
         console.log(drmAgent.getErrorCode());
@@ -111,7 +111,7 @@
     }
 
     function test_launch() {
-        webOSDev.launch({
+        window.webOSDev.launch({
             id: 'some id',
             params: {},
             onSuccess(res) {
@@ -125,7 +125,7 @@
     }
 
     function test_launchParams() {
-        console.log(webOSDev.launchParams());
+        console.log(window.webOSDev.launchParams());
     }
 
     function test_connection_getStatus_wired(wiredStatus: WiredStatus) {

@@ -190,4 +190,8 @@ interface SystemInfo {
     timezone?: string;
 }
 
+interface Window {
+    webOS: WebOS;
+}
+
 declare var webOS: WebOS;
