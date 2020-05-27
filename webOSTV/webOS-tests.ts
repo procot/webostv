@@ -20,8 +20,24 @@
 
     function test_fetchAppInfo() {
         webOS.fetchAppInfo(appInfo => {
-            console.log(typeof appInfo);
-            console.log(appInfo);
+            console.log(appInfo?.appDescription);
+            console.log(appInfo?.bgColor);
+            console.log(appInfo?.bgImage);
+            console.log(appInfo?.disableBackHistoryAPI);
+            console.log(appInfo?.handlesRelaunch);
+            console.log(appInfo?.icon);
+            console.log(appInfo?.iconColor);
+            console.log(appInfo?.id);
+            console.log(appInfo?.largeIcon);
+            console.log(appInfo?.main);
+            console.log(appInfo?.requiredMemory);
+            console.log(appInfo?.resolution);
+            console.log(appInfo?.splashBackground);
+            console.log(appInfo?.title);
+            console.log(appInfo?.transparent);
+            console.log(appInfo?.type);
+            console.log(appInfo?.vendor);
+            console.log(appInfo?.version);
         });
     }
 
