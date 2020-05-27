@@ -13,7 +13,7 @@ interface WebOS {
          * Indicate whether the platform identification is webOS TV.
          * If the platform identification is not webOS TV, undefined is returned.
          */
-        tv: true | undefined;
+        tv?: true;
     };
     readonly keyboard: {
         /**
@@ -38,7 +38,7 @@ interface WebOS {
          *
          * @returns Resulting request object. This object can be used to cancel subscriptions.
          */
-        request(uri: string, params?: ServiceRequestParams): any;
+        request(uri: string, params?: ServiceRequestParams): ServiceRequestReturn;
     };
     /**
      * Returns the device-specific information regarding the TV model,
@@ -282,7 +282,7 @@ interface ServiceRequestParams extends PartialObject<RequestParams<any>> {
     /**
      * The JSON object of the request parameters to send.
      */
-    parameters?: ObjectValue;
+    parameters?: Record<string, any>;
     /**
      * Indicates whether a subscription is desired for this request.
      * - true: Request the subscription.
@@ -305,7 +305,7 @@ interface ServiceRequestReturn {
     /**
      * The JSON object of the request parameters to send.
      */
-    params: ObjectValue;
+    params: Record<string, any>;
     /**
      * Indicates whether a subscription is desired for this request.
      * - true: subscribed
