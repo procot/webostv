@@ -1,13 +1,4 @@
 {
-  "files": [
-    "index.d.ts",
-    "webOSTV/index.d.ts",
-    "webOSTV/webOS-tests.ts",
-    "webOSTV/window.webOS-tests.ts",
-    "webOSTV-dev/index.d.ts",
-    "webOSTV-dev/webOSDev-tests.ts",
-    "webOSTV-dev/window.webOSDev-tests.ts"
-  ],
   "compilerOptions": {
     "target": "es6",                          /* Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017', 'ES2018', 'ES2019' or 'ESNEXT'. */
     "module": "ES6",                     /* Specify module code generation: 'none', 'commonjs', 'amd', 'system', 'umd', 'es2015', or 'ESNext'. */
@@ -24,5 +15,13 @@
 
     "esModuleInterop": true,                  /* Enables emit interoperability between CommonJS and ES Modules via creation of namespace objects for all imports. Implies 'allowSyntheticDefaultImports'. */
     "forceConsistentCasingInFileNames": true  /* Disallow inconsistently-cased references to the same file. */
-  }
+  },
+  "files": [
+    "index.d.ts",
+    "main.d.ts"
+  ],
+  "include": [
+    "webOSTV",
+    "webOSTV-dev"
+  ]
 }
