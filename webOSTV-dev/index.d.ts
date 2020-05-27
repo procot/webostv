@@ -42,7 +42,7 @@ interface WebOSDev {
     /**
      * Passes parameters of an app launched by the webOSDev.launch method.
      */
-    launchParams(): ObjectValue;
+    launchParams(): Record<string, any>;
     /**
      * Returns a device ID provided by the webOS TV since webOS TV 3.0.
      */
@@ -368,7 +368,7 @@ interface LaunchParameters extends RequestParams<void> {
     /**
      * The JSON data object to pass when launching an app
      */
-    params: object;
+    params: Record<string, any>;
 }
 
 interface LGUDIDResponse {

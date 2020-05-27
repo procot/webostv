@@ -1,189 +1,275 @@
-(() => {
-    function test_APP_BROWSER() {
-        console.log(webOSDev.APP.BROWSER);
-    }
+function test_webOSDev() {
+    // $ExpectType WebOSDev
+    window.webOSDev;
+    // $ExpectType WebOSDev
+    webOSDev;
+}
 
-    function test_DRM_Error() {
-        console.log(webOSDev.DRM.Error.API_NOT_SUPPORTED);
-        console.log(webOSDev.DRM.Error.CLIENT_NOT_LOADED);
-        console.log(webOSDev.DRM.Error.DRM_TYPE_UNMATCHED);
-        console.log(webOSDev.DRM.Error.INVALID_KEY_FORMAT);
-        console.log(webOSDev.DRM.Error.INVALID_PARAMS);
-        console.log(webOSDev.DRM.Error.INVALID_TIME_INFO);
-        console.log(webOSDev.DRM.Error.KEY_NOT_FOUND);
-        console.log(webOSDev.DRM.Error.NOT_ERROR);
-        console.log(webOSDev.DRM.Error.UNKNOWN_ERROR);
-        console.log(webOSDev.DRM.Error.UNSUPPORTED_DRM_TYPE);
-        console.log(webOSDev.DRM.Error.VENDOR_ERROR);
-        console.log(webOSDev.DRM.Error.WRONG_CLIENT_ID);
-    }
+function test_APP_BROWSER() {
+    // $ExpectType string
+    webOSDev.APP.BROWSER;
+}
 
-    function test_DRM_Type() {
-        console.log(webOSDev.DRM.Type.PLAYREADY);
-        console.log(webOSDev.DRM.Type.WIDEVINE);
-    }
+function test_DRM_Error() {
+    // $ExpectType number
+    webOSDev.DRM.Error.API_NOT_SUPPORTED;
+    // $ExpectType number
+    webOSDev.DRM.Error.CLIENT_NOT_LOADED;
+    // $ExpectType number
+    webOSDev.DRM.Error.DRM_TYPE_UNMATCHED;
+    // $ExpectType number
+    webOSDev.DRM.Error.INVALID_KEY_FORMAT;
+    // $ExpectType number
+    webOSDev.DRM.Error.INVALID_PARAMS;
+    // $ExpectType number
+    webOSDev.DRM.Error.INVALID_TIME_INFO;
+    // $ExpectType number
+    webOSDev.DRM.Error.KEY_NOT_FOUND;
+    // $ExpectType number
+    webOSDev.DRM.Error.NOT_ERROR;
+    // $ExpectType number
+    webOSDev.DRM.Error.UNKNOWN_ERROR;
+    // $ExpectType number
+    webOSDev.DRM.Error.UNSUPPORTED_DRM_TYPE;
+    // $ExpectType number
+    webOSDev.DRM.Error.VENDOR_ERROR;
+    // $ExpectType number
+    webOSDev.DRM.Error.WRONG_CLIENT_ID;
+}
 
-    function test_LGUDID() {
-        webOSDev.LGUDID({
-            onSuccess(res) {
-                console.log(res.id);
-            },
-            onFailure(err) {
-                console.log(err.errorCode);
-                console.log(err.errorText);
-            }
-        });
-    }
+function test_DRM_Type() {
+    // $ExpectType string
+    webOSDev.DRM.Type.PLAYREADY;
+    // $ExpectType string
+    webOSDev.DRM.Type.WIDEVINE;
+}
 
-    function test_connection_getStatus() {
-        webOSDev.connection.getStatus({
-            subscribe: true,
-            onSuccess(res) {
-                console.log(res.isInternetConnectionAvailable);
-                test_connection_getStatus_wired(res.wired);
-                test_connection_getStatus_wifi(res.wifi);
-                test_connection_getStatus_wifiDirect(res.wifiDirect);
-            },
-            onFailure(err) {
-                console.log(err.errorCode);
-                console.log(err.errorText);
-            }
-        });
-    }
+function test_LGUDID() {
+    // $ExpectType void
+    webOSDev.LGUDID({
+        onSuccess(res) {
+            res; // $ExpectType LGUDIDResponse
+            res.id; // $ExpectType string
+        },
+        onFailure(err) {
+            err; // $ExpectType RequestErrorObject
+            err.errorCode; // $ExpectType string
+            err.errorText; // $ExpectType string
+        }
+    });
+}
 
-    function test_drmAgent() {
-        const drmAgent = webOSDev.drmAgent(webOSDev.DRM.Type.PLAYREADY);
-        console.log(drmAgent.getClientId());
-        console.log(drmAgent.getDrmType());
-        console.log(drmAgent.getErrorCode());
-        console.log(drmAgent.getErrorText());
-        drmAgent.getRightsError({
-            onSuccess(res) {
-                console.log(res.subscribed);
-            },
-            onFailure(err) {
-                console.log(err.errorCode);
-                console.log(err.errorText);
-            }
-        });
-        drmAgent.isLoaded({
-            onSuccess(res) {
-                console.log(res.clientId);
-                console.log(res.drmType);
-                console.log(res.loadStatus);
-            },
-            onFailure(err) {
-                console.log(err.errorCode);
-                console.log(err.errorText);
-            }
-        });
-        drmAgent.load({
-            onSuccess(res) {
-                console.log(res.clientId);
-            },
-            onFailure(err) {
-                console.log(err.errorCode);
-                console.log(err.errorText);
-            }
-        });
-        drmAgent.sendDrmMessage();
-        drmAgent.sendDrmMessage({
-            msg: 'some message',
-            onSuccess(res) {
-                console.log(res.msgId);
-                console.log(res.resultCode);
-                console.log(res.resultMsg);
-            },
-            onFailure(err) {
-                console.log(err.errorCode);
-                console.log(err.errorText);
-            }
-        });
-        drmAgent.unload({
-            onSuccess(res) {
-                console.log(res);
-            },
-            onFailure(err) {
-                console.log(err.errorCode);
-                console.log(err.errorText);
-            }
-        });
-    }
+function test_connection_getStatus() {
+    // $ExpectType void
+    webOSDev.connection.getStatus({
+        subscribe: true,
+        onSuccess(res) {
+            res.isInternetConnectionAvailable; // $ExpectType boolean
+            test_connection_getStatus_wired(res.wired);
+            test_connection_getStatus_wifi(res.wifi);
+            test_connection_getStatus_wifiDirect(res.wifiDirect);
+        },
+        onFailure(err) {
+            err; // $ExpectType RequestErrorObject
+            err.errorCode; // $ExpectType string
+            err.errorText; // $ExpectType string
+        }
+    });
+}
 
-    function test_launch() {
-        webOSDev.launch({
-            id: 'some id',
-            params: {},
-            onSuccess(res) {
-                console.log(res);
-            },
-            onFailure(err) {
-                console.log(err.errorCode);
-                console.log(err.errorText);
-            }
-        });
-    }
+function test_drmAgent() {
+    // $ExpectType DRMAgent
+    const drmAgent = webOSDev.drmAgent(webOSDev.DRM.Type.PLAYREADY);
+    // $ExpectType string
+    drmAgent.getClientId();
+    // $ExpectType string
+    drmAgent.getDrmType();
+    // $ExpectType number
+    drmAgent.getErrorCode();
+    // $ExpectType string
+    drmAgent.getErrorText();
+    // $ExpectType void
+    drmAgent.getRightsError({
+        onSuccess(res) {
+            res; // $ExpectType GetRightsErrorResponse
+            res.subscribed; // $ExpectType boolean
+        },
+        onFailure(err) {
+            err; // $ExpectType RequestErrorObject
+            err.errorCode; // $ExpectType string
+            err.errorText; // $ExpectType string
+        }
+    });
+    // $ExpectType void
+    drmAgent.isLoaded({
+        onSuccess(res) {
+            res; // $ExpectType IsLoadedResponse
+            res.clientId; // $ExpectType string
+            res.drmType; // $ExpectType string
+            res.loadStatus; // $ExpectType boolean
+        },
+        onFailure(err) {
+            err; // $ExpectType RequestErrorObject
+            err.errorCode; // $ExpectType string
+            err.errorText; // $ExpectType string
+        }
+    });
+    // $ExpectType void
+    drmAgent.load({
+        onSuccess(res) {
+            res; // $ExpectType LoadResponse
+            res.clientId; // $ExpectType string
+        },
+        onFailure(err) {
+            err; // $ExpectType RequestErrorObject
+            err.errorCode; // $ExpectType string
+            err.errorText; // $ExpectType string
+        }
+    });
+    // $ExpectType void
+    drmAgent.sendDrmMessage();
+    // $ExpectType void
+    drmAgent.sendDrmMessage({
+        msg: 'some message',
+        onSuccess(res) {
+            res; // $ExpectType SendDrmMessageResponse
+            res.msgId; // $ExpectType string | undefined
+            res.resultCode; // $ExpectType number | undefined
+            res.resultMsg; // $ExpectType string | undefined
+        },
+        onFailure(err) {
+            err; // $ExpectType RequestErrorObject
+            err.errorCode; // $ExpectType string
+            err.errorText; // $ExpectType string
+        }
+    });
+    drmAgent.unload({
+        onSuccess(res) {
+            res; // $ExpectType {}
+        },
+        onFailure(err) {
+            err; // $ExpectType RequestErrorObject
+            err.errorCode; // $ExpectType string
+            err.errorText; // $ExpectType string
+        }
+    });
+}
 
-    function test_launchParams() {
-        console.log(webOSDev.launchParams());
-    }
+function test_launch() {
+    // $ExpectType void
+    webOSDev.launch({
+        id: 'some id',
+        params: {},
+        onSuccess(res) {
+            res; // $ExpectType void
+        },
+        onFailure(err) {
+            err; // $ExpectType RequestErrorObject
+            err.errorCode; // $ExpectType string
+            err.errorText; // $ExpectType string
+        }
+    });
+}
 
-    function test_connection_getStatus_wired(wiredStatus: WiredStatus) {
-        console.log(wiredStatus.dns1);
-        console.log(wiredStatus.dns2);
-        console.log(wiredStatus.dns3);
-        console.log(wiredStatus.gateway);
-        console.log(wiredStatus.interfaceName);
-        console.log(wiredStatus.ipAddress);
-        console.log(wiredStatus.method);
-        console.log(wiredStatus.netmask);
-        console.log(wiredStatus.onInternet);
-        console.log(wiredStatus.state);
-    }
+function test_launchParams() {
+    // $ExpectType Record<string, any>
+    webOSDev.launchParams();
+}
 
-    function test_connection_getStatus_wifi(wifiStatus: WifiStatus) {
-        console.log(wifiStatus.dns1);
-        console.log(wifiStatus.dns2);
-        console.log(wifiStatus.dns3);
-        console.log(wifiStatus.gateway);
-        console.log(wifiStatus.interfaceName);
-        console.log(wifiStatus.ipAddress);
-        console.log(wifiStatus.isWakeOnWiFiEnabled);
-        console.log(wifiStatus.method);
-        console.log(wifiStatus.netmask);
-        console.log(wifiStatus.onInternet);
-        console.log(wifiStatus.ssid);
-        console.log(wifiStatus.state);
-    }
+function test_connection_getStatus_wired(wiredStatus: WiredStatus) {
+    // $ExpectType string | undefined
+    wiredStatus.dns1;
+    // $ExpectType string | undefined
+    wiredStatus.dns2;
+    // $ExpectType string | undefined
+    wiredStatus.dns3;
+    // $ExpectType string | undefined
+    wiredStatus.gateway;
+    // $ExpectType string | undefined
+    wiredStatus.interfaceName;
+    // $ExpectType string | undefined
+    wiredStatus.ipAddress;
+    // $ExpectType "Manual" | "dhcp" | undefined
+    wiredStatus.method;
+    // $ExpectType string | undefined
+    wiredStatus.netmask;
+    // $ExpectType "yes" | "no" | undefined
+    wiredStatus.onInternet;
+    // $ExpectType "connected" | "disconnected"
+    wiredStatus.state;
+}
 
-    function test_connection_getStatus_wifiDirect(wifiDirectStatus: WifiDirectStatus) {
-        const { connectedPeers = [] } = wifiDirectStatus;
-        connectedPeers.forEach(test_connection_getStatus_wifiDirect_WifiPeer);
-        console.log(wifiDirectStatus.localIp);
-        console.log(wifiDirectStatus.state);
-    }
+function test_connection_getStatus_wifi(wifiStatus: WifiStatus) {
+    // $ExpectType string | undefined
+    wifiStatus.dns1;
+    // $ExpectType string | undefined
+    wifiStatus.dns2;
+    // $ExpectType string | undefined
+    wifiStatus.dns3;
+    // $ExpectType string | undefined
+    wifiStatus.gateway;
+    // $ExpectType string | undefined
+    wifiStatus.interfaceName;
+    // $ExpectType string | undefined
+    wifiStatus.ipAddress;
+    // $ExpectType boolean | undefined
+    wifiStatus.isWakeOnWiFiEnabled;
+    // $ExpectType "Manual" | "dhcp" | undefined
+    wifiStatus.method;
+    // $ExpectType string | undefined
+    wifiStatus.netmask;
+    // $ExpectType "yes" | "no" | undefined
+    wifiStatus.onInternet;
+    // $ExpectType string | undefined
+    wifiStatus.ssid;
+    // $ExpectType "connected" | "disconnected"
+    wifiStatus.state;
+}
 
-    function test_connection_getStatus_wifiDirect_WifiPeer(wifiPeerInfo: WifiPeerInfo) {
-        console.log(wifiPeerInfo.configMethod);
-        console.log(wifiPeerInfo.connected);
-        console.log(wifiPeerInfo.deviceAddress);
-        console.log(wifiPeerInfo.deviceName);
-        console.log(wifiPeerInfo.groupOwner);
-        console.log(wifiPeerInfo.invited);
-        console.log(wifiPeerInfo.peerIp);
-        console.log(wifiPeerInfo.serviceDiscoveryResponse);
-        console.log(wifiPeerInfo.signalLevel);
-        wifiPeerInfo.wfdInfo && test_connection_getStatus_wifiDirect_WifiPeer_wfdInfo(wifiPeerInfo.wfdInfo);
-    }
+function test_connection_getStatus_wifiDirect(wifiDirectStatus: WifiDirectStatus) {
+    (wifiDirectStatus.connectedPeers as WifiPeerInfo[]).forEach(test_connection_getStatus_wifiDirect_WifiPeer);
+    // $ExpectType string | undefined
+    wifiDirectStatus.localIp;
+    // $ExpectType "connected" | "disconnected"
+    wifiDirectStatus.state;
+}
 
-    function test_connection_getStatus_wifiDirect_WifiPeer_wfdInfo(wfdInfo: WifiWfdInfo) {
-        console.log(wfdInfo.wfdCpSupport);
-        console.log(wfdInfo.wfdDeviceType);
-        console.log(wfdInfo.wfdRtspPort);
-        console.log(wfdInfo.wfdSessionAvail);
-    }
+function test_connection_getStatus_wifiDirect_WifiPeer(wifiPeerInfo: WifiPeerInfo) {
+    // $ExpectType number | undefined
+    wifiPeerInfo.configMethod;
+    // $ExpectType boolean
+    wifiPeerInfo.connected;
+    // $ExpectType string | undefined
+    wifiPeerInfo.deviceAddress;
+    // $ExpectType string
+    wifiPeerInfo.deviceName;
+    // $ExpectType boolean
+    wifiPeerInfo.groupOwner;
+    // $ExpectType "true" | "false" | undefined
+    wifiPeerInfo.invited;
+    // $ExpectType string | undefined
+    wifiPeerInfo.peerIp;
+    // $ExpectType string | undefined
+    wifiPeerInfo.serviceDiscoveryResponse;
+    // $ExpectType number | undefined
+    wifiPeerInfo.signalLevel;
+    // $ExpectType WifiWfdInfo | undefined
+    wifiPeerInfo.wfdInfo
+    wifiPeerInfo.wfdInfo && test_connection_getStatus_wifiDirect_WifiPeer_wfdInfo(wifiPeerInfo.wfdInfo);
+}
 
-    function test_drmAgent_getClientId(drmAgent: DRMAgent) {
-        drmAgent.getClientId();
-    }
-})();
+function test_connection_getStatus_wifiDirect_WifiPeer_wfdInfo(wfdInfo: WifiWfdInfo) {
+    // $ExpectType boolean
+    wfdInfo.wfdCpSupport;
+    // $ExpectType "source" | "primary-sink" | "secondary-sink"
+    wfdInfo.wfdDeviceType;
+    // $ExpectType number
+    wfdInfo.wfdRtspPort;
+    // $ExpectType boolean
+    wfdInfo.wfdSessionAvail;
+}
+
+function test_drmAgent_getClientId(drmAgent: DRMAgent) {
+    // $ExpectType string
+    drmAgent.getClientId();
+}
