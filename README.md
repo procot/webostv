@@ -1,3 +1,5 @@
+![Publish to NPM](https://github.com/procot/webostv/workflows/Publish%20to%20NPM/badge.svg)
+
 # Description
 
 This the package contain a source code of the [webOSTV.js library](http://webostv.developer.lge.com/api/webostvjs/) with the typings for library. 
