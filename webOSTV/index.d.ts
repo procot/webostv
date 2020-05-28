@@ -38,7 +38,10 @@ interface WebOS {
          *
          * @returns Resulting request object. This object can be used to cancel subscriptions.
          */
-        request(uri: string, params?: ServiceRequestParams): ServiceRequestReturn;
+        request<TParameters extends Record<string, any> = Record<string, any>>(
+            uri: string,
+            params?: ServiceRequestParams<TParameters>
+        ): ServiceRequestReturn<TParameters>;
     };
     /**
      * Returns the device-specific information regarding the TV model,
@@ -61,7 +64,7 @@ interface WebOS {
      * @returns The JSON object read from the app's appinfo.json file. If it is not found, undefined is returned.
      */
     fetchAppInfo(
-        callback: (appInfo?: AppInfo) => any,
+        callback?: (appInfo?: AppInfo) => any,
         path?: string
     ): void;
     /**
@@ -272,9 +275,15 @@ interface DeviceInfo {
      * - false: The device does not support Ultra HD resolution.
      */
     uhd?: boolean;
+    /**
+     * Indicates whether the device supports 8K UHD resolution.
+     * - true: The device supports 8K UHD resolution.
+     * - false: The device does not support 8K UHD resolution.
+     */
+    uhd8K?: boolean;
 }
 
-interface ServiceRequestParams extends PartialObject<RequestParams<any>> {
+interface ServiceRequestParams<TParameters extends Record<string, any> = Record<string, any>> extends Partial<RequestParams<any>> {
     /**
      * The service method being called.
      */
@@ -282,7 +291,7 @@ interface ServiceRequestParams extends PartialObject<RequestParams<any>> {
     /**
      * The JSON object of the request parameters to send.
      */
-    parameters?: Record<string, any>;
+    parameters?: TParameters;
     /**
      * Indicates whether a subscription is desired for this request.
      * - true: Request the subscription.
@@ -295,9 +304,13 @@ interface ServiceRequestParams extends PartialObject<RequestParams<any>> {
      * - false: Not request the re-subscription.
      */
     resubscribe?: boolean;
+    /**
+     * The callback function called when a request is complete (regardless of success or failure).
+     */
+    onComplete?: (...args: any[]) => any;
 }
 
-interface ServiceRequestReturn {
+interface ServiceRequestReturn<TParams extends Record<string, any> = Record<string, any>> extends Partial<RequestParams<any>> {
     /**
      * The full-service request URI, including method name.
      */
@@ -305,7 +318,7 @@ interface ServiceRequestReturn {
     /**
      * The JSON object of the request parameters to send.
      */
-    params: Record<string, any>;
+    params: TParams;
     /**
      * Indicates whether a subscription is desired for this request.
      * - true: subscribed
@@ -322,6 +335,14 @@ interface ServiceRequestReturn {
      * Cancels the service request and any associated subscription. No argument is required.
      */
     cancel(): void;
+    /**
+     * The callback function called when a request is complete (regardless of success or failure).
+     */
+    onComplete?(...args: any[]): any;
+    /**
+     * Sends the request. It is automatically called on creation. No argument is required.
+     */
+    send(): void;
 }
 
 interface SystemInfo {

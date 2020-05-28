@@ -195,7 +195,7 @@ function test_connection_getStatus_wired(wiredStatus: WiredStatus) {
     wiredStatus.netmask;
     // $ExpectType "yes" | "no" | undefined
     wiredStatus.onInternet;
-    // $ExpectType "connected" | "disconnected"
+    // $ExpectType ConnectionState
     wiredStatus.state;
 }
 
@@ -222,7 +222,7 @@ function test_connection_getStatus_wifi(wifiStatus: WifiStatus) {
     wifiStatus.onInternet;
     // $ExpectType string | undefined
     wifiStatus.ssid;
-    // $ExpectType "connected" | "disconnected"
+    // $ExpectType ConnectionState
     wifiStatus.state;
 }
 
@@ -230,7 +230,7 @@ function test_connection_getStatus_wifiDirect(wifiDirectStatus: WifiDirectStatus
     (wifiDirectStatus.connectedPeers as WifiPeerInfo[]).forEach(test_connection_getStatus_wifiDirect_WifiPeer);
     // $ExpectType string | undefined
     wifiDirectStatus.localIp;
-    // $ExpectType "connected" | "disconnected"
+    // $ExpectType ConnectionState
     wifiDirectStatus.state;
 }
 
@@ -261,7 +261,7 @@ function test_connection_getStatus_wifiDirect_WifiPeer(wifiPeerInfo: WifiPeerInf
 function test_connection_getStatus_wifiDirect_WifiPeer_wfdInfo(wfdInfo: WifiWfdInfo) {
     // $ExpectType boolean
     wfdInfo.wfdCpSupport;
-    // $ExpectType "source" | "primary-sink" | "secondary-sink"
+    // $ExpectType WfdDeviceType
     wfdInfo.wfdDeviceType;
     // $ExpectType number
     wfdInfo.wfdRtspPort;

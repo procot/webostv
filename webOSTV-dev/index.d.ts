@@ -22,7 +22,7 @@ interface WebOSDev {
         /**
          * Returns the network connection state.
          */
-        getStatus(params: GetConnectionStatusParameters): void;
+        getStatus(parameters: GetConnectionStatusParameters): void;
     };
     /**
      * Returns DRMAgent instance of a specific DRM type.
@@ -38,7 +38,7 @@ interface WebOSDev {
      * Launches an application with parameters.
      * @param parameters The JSON object containing an app ID, parameters
      */
-    launch(params: LaunchParameters): void;
+    launch(parameters: LaunchParameters): void;
     /**
      * Passes parameters of an app launched by the webOSDev.launch method.
      */
@@ -46,7 +46,7 @@ interface WebOSDev {
     /**
      * Returns a device ID provided by the webOS TV since webOS TV 3.0.
      */
-    LGUDID(params: RequestParams<LGUDIDResponse>): void;
+    LGUDID(parameters: RequestParams<LGUDIDResponse>): void;
 }
 
 interface DRMType {
@@ -149,7 +149,7 @@ interface WiredStatus {
      * If the wired connection is available it will be set to connected.
      * If the wired connection is not available, it will be set to disconnected .
      */
-    state: 'connected' | 'disconnected';
+    state: ConnectionState;
     /**
      * Name of the wired Interface name in use. For example, ppp0.
      */
@@ -182,7 +182,7 @@ interface WiredStatus {
      * If the IP address was assigned using the manual mode, method will contain 'Manual'.
      * If the IP Address was assigned through DHCP, method will contain 'dhcp'.
      */
-    method?: 'Manual' | 'dhcp';
+    method?: ConnectionIpMethod;
     /**
      * The captive portal technique forces an HTTP client on a network to see a special web page
      * (usually for authentication purposes) before using the Internet normally.
@@ -191,7 +191,7 @@ interface WiredStatus {
      * - 'yes' - indicating the WiFi connection is connected to the Internet.
      * - 'no' - indicating the WiFi connection is not connected to the Internet.
      */
-    onInternet?: 'yes' | 'no';
+    onInternet?: ConnectionOnInternet;
 }
 
 /**
@@ -205,7 +205,7 @@ interface WifiStatus {
      * If the Wi-Fi connection is available it will be set to 'connected'.
      * If the Wi-Fi connection is not available, it will be set to 'disconnected' .
      */
-    state: 'connected' | 'disconnected';
+    state: ConnectionState;
     /**
      * Name of the Wi-Fi Interface name in use. For example, eth0.
      */
@@ -238,7 +238,7 @@ interface WifiStatus {
      * If the IP address was assigned using the manual mode, method will contain 'Manual'.
      * If the IP Address was assigned through DHCP, method will contain 'dhcp'.
      */
-    method?: 'Manual' | 'dhcp';
+    method?: ConnectionIpMethod;
     /**
      * The SSID of the connected service (if known).
      */
@@ -256,8 +256,12 @@ interface WifiStatus {
      * - yes - indicating the Wi-Fi connection is connected to the Internet.
      * - no - indicating the Wi-Fi connection is not connected to the Internet.
      */
-    onInternet?: 'yes' | 'no';
+    onInternet?: ConnectionOnInternet;
 }
+
+type ConnectionIpMethod = 'Manual' | 'dhcp';
+
+type ConnectionOnInternet = 'yes' | 'no';
 
 /**
  * The wifidirect object provides details on the status of the Wi-Fi direct connection.
@@ -270,7 +274,7 @@ interface WifiDirectStatus {
      * If the Wi-Fi connection is available it will be set to 'connected'.
      * If the Wi-Fi connection is not available, it will be set to 'disconnected'.
      */
-    state: 'connected' | 'disconnected';
+    state: ConnectionState;
     /**
      * The IP address of the local connection endpoint.
      */
@@ -280,6 +284,8 @@ interface WifiDirectStatus {
      */
     connectedPeers?: WifiPeerInfo[];
 }
+
+type ConnectionState = 'connected' | 'disconnected';
 
 /**
  * This object contains information on a peer-to-peer client.
@@ -321,12 +327,14 @@ interface WifiPeerInfo {
      * If the connection is available, this property will be set to 'true'.
      * if the connection is not available, this property will be set to 'false'.
      */
-    invited?: 'true' | 'false';
+    invited?: WifiPeerInfoInvited;
     /**
      * Service discovery response. Only sent on the first inquiry and never again.
      */
     serviceDiscoveryResponse?: string;
 }
+
+type WifiPeerInfoInvited = 'true' | 'false';
 
 /**
  * WifiWfdInfo Object (Wi-Fi Direct Info Object)
@@ -347,7 +355,7 @@ interface WifiWfdInfo {
      * - 'primary-sink'
      * - 'secondary-sink'
      */
-    wfdDeviceType: 'source' | 'primary-sink' | 'secondary-sink';
+    wfdDeviceType: WfdDeviceType;
     /**
      * Control port for Wi-Fi Direct session management.
      */
@@ -359,6 +367,8 @@ interface WifiWfdInfo {
      */
     wfdSessionAvail: boolean;
 }
+
+type WfdDeviceType = 'source' | 'primary-sink' | 'secondary-sink';
 
 interface LaunchParameters extends RequestParams<void> {
     /**
