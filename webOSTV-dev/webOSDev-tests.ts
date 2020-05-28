@@ -1,8 +1,5 @@
 function test_webOSDev() {
-    // $ExpectType WebOSDev
-    window.webOSDev;
-    // $ExpectType WebOSDev
-    webOSDev;
+    window.webOSDev = webOSDev;
 }
 
 function test_APP_BROWSER() {
@@ -176,7 +173,7 @@ function test_launchParams() {
     webOSDev.launchParams();
 }
 
-function test_connection_getStatus_wired(wiredStatus: WiredStatus) {
+function test_connection_getStatus_wired(wiredStatus: WebOSTV.WiredStatus) {
     // $ExpectType string | undefined
     wiredStatus.dns1;
     // $ExpectType string | undefined
@@ -199,7 +196,7 @@ function test_connection_getStatus_wired(wiredStatus: WiredStatus) {
     wiredStatus.state;
 }
 
-function test_connection_getStatus_wifi(wifiStatus: WifiStatus) {
+function test_connection_getStatus_wifi(wifiStatus: WebOSTV.WifiStatus) {
     // $ExpectType string | undefined
     wifiStatus.dns1;
     // $ExpectType string | undefined
@@ -226,15 +223,15 @@ function test_connection_getStatus_wifi(wifiStatus: WifiStatus) {
     wifiStatus.state;
 }
 
-function test_connection_getStatus_wifiDirect(wifiDirectStatus: WifiDirectStatus) {
-    (wifiDirectStatus.connectedPeers as WifiPeerInfo[]).forEach(test_connection_getStatus_wifiDirect_WifiPeer);
+function test_connection_getStatus_wifiDirect(wifiDirectStatus: WebOSTV.WifiDirectStatus) {
+    (wifiDirectStatus.connectedPeers as WebOSTV.WifiPeerInfo[]).forEach(test_connection_getStatus_wifiDirect_WifiPeer);
     // $ExpectType string | undefined
     wifiDirectStatus.localIp;
     // $ExpectType ConnectionState
     wifiDirectStatus.state;
 }
 
-function test_connection_getStatus_wifiDirect_WifiPeer(wifiPeerInfo: WifiPeerInfo) {
+function test_connection_getStatus_wifiDirect_WifiPeer(wifiPeerInfo: WebOSTV.WifiPeerInfo) {
     // $ExpectType number | undefined
     wifiPeerInfo.configMethod;
     // $ExpectType boolean
@@ -258,7 +255,7 @@ function test_connection_getStatus_wifiDirect_WifiPeer(wifiPeerInfo: WifiPeerInf
     wifiPeerInfo.wfdInfo && test_connection_getStatus_wifiDirect_WifiPeer_wfdInfo(wifiPeerInfo.wfdInfo);
 }
 
-function test_connection_getStatus_wifiDirect_WifiPeer_wfdInfo(wfdInfo: WifiWfdInfo) {
+function test_connection_getStatus_wifiDirect_WifiPeer_wfdInfo(wfdInfo: WebOSTV.WifiWfdInfo) {
     // $ExpectType boolean
     wfdInfo.wfdCpSupport;
     // $ExpectType WfdDeviceType
@@ -269,7 +266,7 @@ function test_connection_getStatus_wifiDirect_WifiPeer_wfdInfo(wfdInfo: WifiWfdI
     wfdInfo.wfdSessionAvail;
 }
 
-function test_drmAgent_getClientId(drmAgent: DRMAgent) {
+function test_drmAgent_getClientId(drmAgent: WebOSTV.DRMAgent) {
     // $ExpectType string
     drmAgent.getClientId();
 }
