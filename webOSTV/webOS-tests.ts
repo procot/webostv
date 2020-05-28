@@ -1,8 +1,5 @@
 function test_webOS() {
-    // $ExpectType WebOS
-    window.webOS;
-    // $ExpectType WebOS
-    webOS;
+    window.webOS = webOS;
 }
 
 function test_deviceInfo() {
@@ -31,24 +28,24 @@ function test_fetchAppInfo() {
     // $ExpectType void
     webOS.fetchAppInfo(appInfo => {
         appInfo; // $ExpectType AppInfo | undefined
-        (appInfo as AppInfo).appDescription; // $ExpectType string | undefined
-        (appInfo as AppInfo).bgColor; // $ExpectType string | undefined
-        (appInfo as AppInfo).bgImage; // $ExpectType string | undefined
-        (appInfo as AppInfo).disableBackHistoryAPI; // $ExpectType boolean | undefined
-        (appInfo as AppInfo).handlesRelaunch; // $ExpectType boolean | undefined
-        (appInfo as AppInfo).icon; // $ExpectType string
-        (appInfo as AppInfo).iconColor; // $ExpectType string | undefined
-        (appInfo as AppInfo).id; // $ExpectType string
-        (appInfo as AppInfo).largeIcon; // $ExpectType string
-        (appInfo as AppInfo).main; // $ExpectType string
-        (appInfo as AppInfo).requiredMemory; // $ExpectType number | undefined
-        (appInfo as AppInfo).resolution; // $ExpectType string | undefined
-        (appInfo as AppInfo).splashBackground; // $ExpectType string
-        (appInfo as AppInfo).title; // $ExpectType string
-        (appInfo as AppInfo).transparent; // $ExpectType string | undefined
-        (appInfo as AppInfo).type; // $ExpectType "web"
-        (appInfo as AppInfo).vendor; // $ExpectType string
-        (appInfo as AppInfo).version; // $ExpectType string
+        (appInfo as WebOSTV.AppInfo).appDescription; // $ExpectType string | undefined
+        (appInfo as WebOSTV.AppInfo).bgColor; // $ExpectType string | undefined
+        (appInfo as WebOSTV.AppInfo).bgImage; // $ExpectType string | undefined
+        (appInfo as WebOSTV.AppInfo).disableBackHistoryAPI; // $ExpectType boolean | undefined
+        (appInfo as WebOSTV.AppInfo).handlesRelaunch; // $ExpectType boolean | undefined
+        (appInfo as WebOSTV.AppInfo).icon; // $ExpectType string
+        (appInfo as WebOSTV.AppInfo).iconColor; // $ExpectType string | undefined
+        (appInfo as WebOSTV.AppInfo).id; // $ExpectType string
+        (appInfo as WebOSTV.AppInfo).largeIcon; // $ExpectType string
+        (appInfo as WebOSTV.AppInfo).main; // $ExpectType string
+        (appInfo as WebOSTV.AppInfo).requiredMemory; // $ExpectType number | undefined
+        (appInfo as WebOSTV.AppInfo).resolution; // $ExpectType string | undefined
+        (appInfo as WebOSTV.AppInfo).splashBackground; // $ExpectType string
+        (appInfo as WebOSTV.AppInfo).title; // $ExpectType string
+        (appInfo as WebOSTV.AppInfo).transparent; // $ExpectType string | undefined
+        (appInfo as WebOSTV.AppInfo).type; // $ExpectType "web"
+        (appInfo as WebOSTV.AppInfo).vendor; // $ExpectType string
+        (appInfo as WebOSTV.AppInfo).version; // $ExpectType string
     });
 }
 
