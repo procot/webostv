@@ -19,6 +19,7 @@ function test_deviceInfo() {
         deviceInfo.versionDot; // $ExpectType number
         deviceInfo.versionMajor; // $ExpectType number
         deviceInfo.versionMinor; // $ExpectType number
+        deviceInfo.uhd8K; // $ExpectType boolean | undefined
     });
 }
 
@@ -88,8 +89,8 @@ function test_systemInfo() {
 }
 
 function test_service_request() {
-    // $ExpectType ServiceRequestReturn
-    webOS.service.request('luna://com.palm.systemservice', {
+    // $ExpectType ServiceRequestReturn<{ subscribe: boolean; }>
+    const returnedValue = webOS.service.request('luna://com.palm.systemservice', {
         method: 'time/getSystemTime',
         parameters: { subscribe: true },
         onSuccess(res) {
@@ -101,4 +102,14 @@ function test_service_request() {
             err.errorText; // $ExpectType string
         }
     });
+
+    returnedValue.cancel(); // $ExpectType void
+    returnedValue.onComplete; // $ExpectType ((...args: any[]) => any) | undefined
+    returnedValue.onFailure; // $ExpectType ((error: RequestErrorObject) => any) | undefined
+    returnedValue.onSuccess; // $ExpectType ((result: any) => any) | undefined
+    returnedValue.params; // $ExpectType { subscribe: boolean; }
+    returnedValue.resubscribe; // $ExpectType boolean
+    returnedValue.send; // $ExpectType () => void
+    returnedValue.subscribe; // $ExpectType boolean
+    returnedValue.uri; // $ExpectType string
 }

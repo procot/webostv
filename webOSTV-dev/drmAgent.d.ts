@@ -43,11 +43,26 @@ interface DRMAgent {
 
 interface GetRightsErrorResponse {
     /**
+     *  Flag that indicates success/failure of the request.
+     * - true: Success
+     * - false: Failure
+     */
+    returnValue: boolean;
+    /**
      * Flag that indicates whether the subscription is enabled or not.
      * - true: Enabled
      * - false: Not enabled
      */
     subscribed: boolean;
+    /**
+     * `errorCode` contains the error code if the method fails. The method will return errorCode only if it fails.
+     * @see DRMError
+     */
+    errorCode?: DRMError[keyof DRMError];
+    /**
+     * `errorText` contains the error text if the method fails. The method will return errorText only if it fails.
+     */
+    errorText?: string;
 }
 
 interface IsLoadedResponse {
@@ -63,6 +78,7 @@ interface IsLoadedResponse {
     clientId: string;
     /**
      * Returns the client type of DRM when the DRM client is loaded successfully.
+     * @see DRMType
      */
     drmType: DRMType[keyof DRMType];
 }

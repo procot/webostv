@@ -4,12 +4,12 @@ This the package contain a source code of the [webOSTV.js library](http://webost
 
 # Library version
 
-A source code and a typings presents for library version 1.1.1
+A source code and a typings presents for library version 1.2.1
 
 ## Install
 
 ```bash
-npm i -D @procot/webostv
+npm i @procot/webostv
 ```
 or
 ```bash
