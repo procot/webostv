@@ -5,7 +5,7 @@ declare namespace WebOSTV {
         /**
          * A member representing the build version of the webOSTV.js library
          */
-        readonly libVersion: string;
+        readonly libVersion: '1.2.1';
         /**
          * A member representing the platform identification of webOS variants
          */

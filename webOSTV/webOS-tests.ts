@@ -60,7 +60,7 @@ function test_keyboard_isShowing() {
 }
 
 function test_libVersion() {
-    // $ExpectType string
+    // $ExpectType "1.2.1"
     webOS.libVersion;
 }
 
