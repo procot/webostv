@@ -35,9 +35,9 @@ function test_DRM_Error() {
 }
 
 function test_DRM_Type() {
-    // $ExpectType string
+    // $ExpectType DRMTypePlayready
     webOSDev.DRM.Type.PLAYREADY;
-    // $ExpectType string
+    // $ExpectType DRMTypeWidevine
     webOSDev.DRM.Type.WIDEVINE;
 }
 
@@ -75,11 +75,11 @@ function test_connection_getStatus() {
 }
 
 function test_drmAgent() {
-    // $ExpectType DRMAgent
+    // $ExpectType DRMAgent<DRMTypePlayready>
     const drmAgent = webOSDev.drmAgent(webOSDev.DRM.Type.PLAYREADY);
     // $ExpectType string
     drmAgent.getClientId();
-    // $ExpectType string
+    // $ExpectType DRMTypePlayready
     drmAgent.getDrmType();
     // $ExpectType number
     drmAgent.getErrorCode();
@@ -100,9 +100,9 @@ function test_drmAgent() {
     // $ExpectType void
     drmAgent.isLoaded({
         onSuccess(res) {
-            res; // $ExpectType IsLoadedResponse
+            res; // $ExpectType IsLoadedResponse<DRMTypePlayready>
             res.clientId; // $ExpectType string
-            res.drmType; // $ExpectType string
+            res.drmType; // $ExpectType DRMTypePlayready
             res.loadStatus; // $ExpectType boolean
         },
         onFailure(err) {
