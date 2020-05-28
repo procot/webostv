@@ -34,7 +34,7 @@ declare namespace WebOSTV {
          * const drmType = webOSDevPromised.DRM.Type;
          * const drmAgent = webOSDevPromised.drmAgent(drmType);
          */
-        drmAgent(type: DRMType[keyof DRMType]): DRMAgent;
+        drmAgent<TDrmType extends DRMType[keyof DRMType] = DRMType[keyof DRMType]>(type: TDrmType): DRMAgent<TDrmType>;
         /**
          * Launches an application with parameters.
          * @param parameters The JSON object containing an app ID, parameters
@@ -52,10 +52,14 @@ declare namespace WebOSTV {
 
     interface DRMType {
         /** PlayReady */
-        PLAYREADY: string;
+        PLAYREADY: DRMTypePlayready;
         /** Widevine */
-        WIDEVINE: string;
+        WIDEVINE: DRMTypeWidevine;
     }
+
+    type DRMTypePlayready = string & { __type: 'playready' };
+
+    type DRMTypeWidevine = string & { __type: 'widevine' };
 
     interface DRMError {
         /**

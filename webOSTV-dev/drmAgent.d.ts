@@ -1,5 +1,5 @@
 declare namespace WebOSTV {
-    interface DRMAgent {
+    interface DRMAgent<TDrmType extends DRMType[keyof DRMType] = DRMType[keyof DRMType]> {
         /**
          * Returns a client ID of DRM.
          */
@@ -7,7 +7,7 @@ declare namespace WebOSTV {
         /**
          * Returns a DRM type to be set.
          */
-        getDrmType(): DRMType[keyof DRMType];
+        getDrmType(): TDrmType;
         /**
          * Returns an error code from the DRM service.
          */
@@ -25,7 +25,7 @@ declare namespace WebOSTV {
         /**
          * Checks whether a DRM client that corresponds to given application ID exists.
          */
-        isLoaded(params: RequestParams<IsLoadedResponse>): void;
+        isLoaded(params: RequestParams<IsLoadedResponse<TDrmType>>): void;
         /**
          * Creates a client instance for a certain type of DRM.
          * The DRM type is specified when a DRM agent is created.
@@ -66,7 +66,7 @@ declare namespace WebOSTV {
         errorText?: string;
     }
 
-    interface IsLoadedResponse {
+    interface IsLoadedResponse<TDrmType extends DRMType[keyof DRMType] = DRMType[keyof DRMType]> {
         /**
          * Indicates the DRM client is loaded.
          * - true: the DRM client is loaded.
@@ -81,7 +81,7 @@ declare namespace WebOSTV {
          * Returns the client type of DRM when the DRM client is loaded successfully.
          * @see DRMType
          */
-        drmType: DRMType[keyof DRMType];
+        drmType: TDrmType;
     }
 
     interface LoadResponse {
