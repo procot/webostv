@@ -5,6 +5,8 @@ tslint.json
 tsconfig.json
 package-lock.json
 
+.github
+
 # tests
 webOSTV/webOS-tests.ts
 webOSTV-dev/webOSDev-tests.ts
