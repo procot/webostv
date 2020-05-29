@@ -39,10 +39,13 @@ declare namespace WebOSTV {
              *
              * @returns Resulting request object. This object can be used to cancel subscriptions.
              */
-            request<TParameters extends Record<string, any> = Record<string, any>>(
+            request<
+                TParameters extends Record<string, any> = Record<string, any>,
+                TData extends OnCompleteResponse = OnCompleteResponse
+            >(
                 uri: string,
-                params?: ServiceRequestParams<TParameters>
-            ): ServiceRequestReturn<TParameters>;
+                params?: ServiceRequestParams<TParameters, TData>
+            ): ServiceRequestReturn<TParameters, TData>;
         };
         /**
          * Returns the device-specific information regarding the TV model,
@@ -284,7 +287,10 @@ declare namespace WebOSTV {
         uhd8K?: boolean;
     }
 
-    interface ServiceRequestParams<TParameters extends Record<string, any> = Record<string, any>> extends Partial<RequestParams<any>> {
+    interface ServiceRequestParams<
+        TParameters extends Record<string, any> = Record<string, any>,
+        TData extends OnCompleteResponse = OnCompleteResponse
+    > extends RequestParams<Pick<TData, 'returnValue'> & OnCompleteSuccessResponse, OnCompleteFailureResponse> {
         /**
          * The service method being called.
          */
@@ -308,10 +314,13 @@ declare namespace WebOSTV {
         /**
          * The callback function called when a request is complete (regardless of success or failure).
          */
-        onComplete?: (...args: any[]) => any;
+        onComplete?(result: TData): any;
     }
 
-    interface ServiceRequestReturn<TParams extends Record<string, any> = Record<string, any>> extends Partial<RequestParams<any>> {
+    interface ServiceRequestReturn<
+        TParams extends Record<string, any> = Record<string, any>,
+        TData extends OnCompleteResponse = OnCompleteResponse
+    > extends RequestParams<Pick<TData, 'returnValue'> & OnCompleteSuccessResponse, OnCompleteFailureResponse> {
         /**
          * The full-service request URI, including method name.
          */
@@ -339,11 +348,21 @@ declare namespace WebOSTV {
         /**
          * The callback function called when a request is complete (regardless of success or failure).
          */
-        onComplete?(...args: any[]): any;
+        onComplete?(result: TData): any;
         /**
          * Sends the request. It is automatically called on creation. No argument is required.
          */
         send(): void;
+    }
+
+    type OnCompleteResponse = OnCompleteSuccessResponse | OnCompleteFailureResponse;
+
+    interface OnCompleteSuccessResponse {
+        returnValue: true;
+    }
+
+    interface OnCompleteFailureResponse {
+        returnValue: false;
     }
 
     interface SystemInfo {
