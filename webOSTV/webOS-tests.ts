@@ -86,24 +86,56 @@ function test_systemInfo() {
 }
 
 function test_service_request() {
-    // $ExpectType ServiceRequestReturn<{ subscribe: boolean; }>
+    // $ExpectType ServiceRequestReturn<{ subscribe: boolean; }, OnCompleteResponse>
     const returnedValue = webOS.service.request('luna://com.palm.systemservice', {
         method: 'time/getSystemTime',
         parameters: { subscribe: true },
-        onSuccess(res) {
-            res; // $ExpectType any
+        onSuccess({ returnValue }) {
+            returnValue; // $ExpectType true
         },
-        onFailure(err) {
-            err; // $ExpectType RequestErrorObject
-            err.errorCode; // $ExpectType string
-            err.errorText; // $ExpectType string
+        onFailure({ returnValue, errorCode, errorText }) {
+            returnValue; // $ExpectType false
+            errorCode; // $ExpectType string
+            errorText; // $ExpectType string
         }
     });
 
+    webOS.service.request('luna://com.palm.systemservice', {
+        method: 'time/getSystemTime',
+        parameters: { subscribe: true },
+        onSuccess({ returnValue }) {}
+    });
+
+    webOS.service.request('luna://com.palm.systemservice', {
+        method: 'time/getSystemTime',
+        parameters: { subscribe: true },
+        onComplete(res) {
+            res.returnValue; // $ExpectType boolean
+            if (res.returnValue) {
+                res; // $ExpectType OnCompleteSuccessResponse
+            } else {
+                res; // $ExpectType OnCompleteFailureResponse
+            }
+        }
+    });
+
+    webOS.service.request('luna://com.palm.systemservice', {
+        method: 'time/getSystemTime',
+        parameters: { subscribe: true }
+    });
+
+    webOS.service.request('luna://com.palm.systemservice', {
+        method: 'time/getSystemTime',
+        parameters: { subscribe: true },
+        onSuccess({ returnValue, foo }: { returnValue: true, foo: string }) {}
+    });
+
+    webOS.service.request('luna://com.palm.systemservice');
+
     returnedValue.cancel(); // $ExpectType void
-    returnedValue.onComplete; // $ExpectType ((...args: any[]) => any) | undefined
-    returnedValue.onFailure; // $ExpectType ((error: RequestErrorObject) => any) | undefined
-    returnedValue.onSuccess; // $ExpectType ((result: any) => any) | undefined
+    returnedValue.onComplete; // $ExpectType ((result: OnCompleteResponse) => any) | undefined
+    returnedValue.onFailure; // $ExpectType ((error: OnCompleteFailureResponse & RequestErrorObject) => any) | undefined
+    returnedValue.onSuccess; // $ExpectType ((result: Pick<OnCompleteResponse, "returnValue"> & OnCompleteSuccessResponse) => any) | undefined
     returnedValue.params; // $ExpectType { subscribe: boolean; }
     returnedValue.resubscribe; // $ExpectType boolean
     returnedValue.send; // $ExpectType () => void

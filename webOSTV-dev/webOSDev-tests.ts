@@ -49,11 +49,19 @@ function test_LGUDID() {
             res.id; // $ExpectType string
         },
         onFailure(err) {
-            err; // $ExpectType RequestErrorObject
+            err; // $ExpectType Record<string, any> & RequestErrorObject
             err.errorCode; // $ExpectType string
             err.errorText; // $ExpectType string
         }
     });
+    webOSDev.LGUDID({
+        onSuccess(res) {
+            res; // $ExpectType LGUDIDResponse
+            res.id; // $ExpectType string
+        }
+    });
+
+    webOSDev.LGUDID({});
 }
 
 function test_connection_getStatus() {
@@ -67,10 +75,23 @@ function test_connection_getStatus() {
             test_connection_getStatus_wifiDirect(res.wifiDirect);
         },
         onFailure(err) {
-            err; // $ExpectType RequestErrorObject
+            err; // $ExpectType Record<string, any> & RequestErrorObject
             err.errorCode; // $ExpectType string
             err.errorText; // $ExpectType string
         }
+    });
+    webOSDev.connection.getStatus({
+        subscribe: true,
+        onSuccess(res) {
+            res.isInternetConnectionAvailable; // $ExpectType boolean
+            test_connection_getStatus_wired(res.wired);
+            test_connection_getStatus_wifi(res.wifi);
+            test_connection_getStatus_wifiDirect(res.wifiDirect);
+        }
+    });
+
+    webOSDev.connection.getStatus({
+        subscribe: true
     });
 }
 
@@ -92,7 +113,7 @@ function test_drmAgent() {
             res.subscribed; // $ExpectType boolean
         },
         onFailure(err) {
-            err; // $ExpectType RequestErrorObject
+            err; // $ExpectType Record<string, any> & RequestErrorObject
             err.errorCode; // $ExpectType string
             err.errorText; // $ExpectType string
         }
@@ -106,7 +127,7 @@ function test_drmAgent() {
             res.loadStatus; // $ExpectType boolean
         },
         onFailure(err) {
-            err; // $ExpectType RequestErrorObject
+            err; // $ExpectType Record<string, any> & RequestErrorObject
             err.errorCode; // $ExpectType string
             err.errorText; // $ExpectType string
         }
@@ -118,7 +139,7 @@ function test_drmAgent() {
             res.clientId; // $ExpectType string
         },
         onFailure(err) {
-            err; // $ExpectType RequestErrorObject
+            err; // $ExpectType Record<string, any> & RequestErrorObject
             err.errorCode; // $ExpectType string
             err.errorText; // $ExpectType string
         }
@@ -135,7 +156,7 @@ function test_drmAgent() {
             res.resultMsg; // $ExpectType string | undefined
         },
         onFailure(err) {
-            err; // $ExpectType RequestErrorObject
+            err; // $ExpectType Record<string, any> & RequestErrorObject
             err.errorCode; // $ExpectType string
             err.errorText; // $ExpectType string
         }
@@ -145,7 +166,7 @@ function test_drmAgent() {
             res; // $ExpectType {}
         },
         onFailure(err) {
-            err; // $ExpectType RequestErrorObject
+            err; // $ExpectType Record<string, any> & RequestErrorObject
             err.errorCode; // $ExpectType string
             err.errorText; // $ExpectType string
         }
@@ -161,7 +182,7 @@ function test_launch() {
             res; // $ExpectType void
         },
         onFailure(err) {
-            err; // $ExpectType RequestErrorObject
+            err; // $ExpectType Record<string, any> & RequestErrorObject
             err.errorCode; // $ExpectType string
             err.errorText; // $ExpectType string
         }

@@ -1,13 +1,13 @@
 declare namespace WebOSTV {
-    interface RequestParams<T> {
+    interface RequestParams<TSuccessData = any, TErrorData = Record<string, any>> {
         /**
          * The callback function called when the method succeeds.
          */
-        onSuccess(result: T): any;
+        onSuccess?(result: TSuccessData): any;
         /**
          * The callback function called when the method fails.
          */
-        onFailure(error: RequestErrorObject): any;
+        onFailure?(error: TErrorData & RequestErrorObject): any;
     }
 
     interface RequestErrorObject {
