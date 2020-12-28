@@ -22,7 +22,7 @@ jobs:
       run: echo "use node.js ${NVMRC}"
 
     - name: Echo ls
-      run: ls
+      run: ls -f
 
     - name: Use Node.js ${NVMRC}
       uses: actions/setup-node@v1
