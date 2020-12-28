@@ -5,7 +5,8 @@
         "indent": [true, "spaces", 4],
         "no-single-declare-module": false,
         "quotemark": [true, "single"],
-        "no-bad-reference": false
+        "no-bad-reference": false,
+        "no-redundant-jsdoc": false
     },
     "linterOptions": {
         "exclude": [

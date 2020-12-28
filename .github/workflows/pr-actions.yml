@@ -12,16 +12,15 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [8]
-
     steps:
+    - name: Read .nvmrc
+      run: NVMRC=$(cat .nvmrc)
+
     - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
+    - name: Use Node.js ${NVMRC}
       uses: actions/setup-node@v1
       with:
-        node-version: ${{ matrix.node-version }}
+        node-version: ${NVMRC}
     - run: npm ci
     - run: npm run tslint
 
@@ -29,16 +28,15 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [8]
-
     steps:
+    - name: Read .nvmrc
+      run: NVMRC=$(cat .nvmrc)
+
     - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
+    - name: Use Node.js ${NVMRC}
       uses: actions/setup-node@v1
       with:
-        node-version: ${{ matrix.node-version }}
+        node-version: ${NVMRC}
     - run: npm ci
     - run: npm run dtslint
     
@@ -46,15 +44,14 @@ jobs:
     
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [8]
-
     steps:
+    - name: Read .nvmrc
+      run: NVMRC=$(cat .nvmrc)
+
     - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
+    - name: Use Node.js ${NVMRC}
       uses: actions/setup-node@v1
       with:
-        node-version: ${{ matrix.node-version }}
+        node-version: ${NVMRC}
     - run: npm ci
     - run: npm run type-check
