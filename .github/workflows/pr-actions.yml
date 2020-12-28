@@ -13,10 +13,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - uses: actions/checkout@v2
+
     - name: Read .nvmrc
       run: NVMRC=$(cat .nvmrc)
 
-    - uses: actions/checkout@v2
     - name: Use Node.js ${NVMRC}
       uses: actions/setup-node@v1
       with:
@@ -29,10 +30,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - uses: actions/checkout@v2
+
     - name: Read .nvmrc
       run: NVMRC=$(cat .nvmrc)
 
-    - uses: actions/checkout@v2
     - name: Use Node.js ${NVMRC}
       uses: actions/setup-node@v1
       with:
@@ -45,10 +47,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - uses: actions/checkout@v2
+
     - name: Read .nvmrc
       run: NVMRC=$(cat .nvmrc)
 
-    - uses: actions/checkout@v2
     - name: Use Node.js ${NVMRC}
       uses: actions/setup-node@v1
       with:

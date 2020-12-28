@@ -13,9 +13,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+
+      - name: Read .nvmrc
+        run: NVMRC=$(cat .nvmrc)
+
       - uses: actions/setup-node@v1
         with:
-          node-version: 10
+          node-version: ${NVMRC}
       - run: npm ci
       - run: npm run dtslint
 
@@ -24,9 +28,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+
+      - name: Read .nvmrc
+        run: NVMRC=$(cat .nvmrc)
+
       - uses: actions/setup-node@v1
         with:
-          node-version: 8
+          node-version: ${NVMRC}
       - run: npm ci
       - run: npm run tslint
 
@@ -35,9 +43,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+
+      - name: Read .nvmrc
+        run: NVMRC=$(cat .nvmrc)
+
       - uses: actions/setup-node@v1
         with:
-          node-version: 8
+          node-version: ${NVMRC}
       - run: npm ci
       - run: npm run type-check
 
@@ -47,9 +59,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+
+      - name: Read .nvmrc
+        run: NVMRC=$(cat .nvmrc)
+
       - uses: actions/setup-node@v1
         with:
-          node-version: 8
+          node-version: ${NVMRC}
           registry-url: https://registry.npmjs.org/
       - run: npm publish --access public
         env:
