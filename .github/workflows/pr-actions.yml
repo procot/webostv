@@ -18,6 +18,9 @@ jobs:
     - name: Read .nvmrc
       run: NVMRC=$(cat .nvmrc)
 
+    - name: Echo .NVMRC
+      run: echo "use node.js ${NVMRC}"
+
     - name: Use Node.js ${NVMRC}
       uses: actions/setup-node@v1
       with:
