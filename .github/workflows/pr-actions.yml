@@ -16,21 +16,16 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: Read .nvmrc
-      run: NVMRC=$(cat .nvmrc)
+      run: echo "##[set-output name=NVMRC;]$(cat .nvmrc)"
+      id: nvm
 
     - name: Echo .NVMRC
       run: echo "use node.js ${NVMRC}"
 
-    - name: Echo ls
-      run: ls -lf
-
-    - name: Echo nvmrc
-      run: cat .nvmrc
-
-    - name: Use Node.js ${NVMRC}
+    - name: Use Node.js (.nvmrc)
       uses: actions/setup-node@v1
       with:
-        node-version: ${NVMRC}
+        node-version: "${{ steps.nvm.outputs.NVMRC }}"
     - run: npm ci
     - run: npm run tslint
 
@@ -42,12 +37,16 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: Read .nvmrc
-      run: NVMRC=$(cat .nvmrc)
+      run: echo "##[set-output name=NVMRC;]$(cat .nvmrc)"
+      id: nvm
 
-    - name: Use Node.js ${NVMRC}
+    - name: Echo .NVMRC
+      run: echo "use node.js ${NVMRC}"
+
+    - name: Use Node.js (.nvmrc)
       uses: actions/setup-node@v1
       with:
-        node-version: ${NVMRC}
+        node-version: "${{ steps.nvm.outputs.NVMRC }}"
     - run: npm ci
     - run: npm run dtslint
     
@@ -59,11 +58,15 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: Read .nvmrc
-      run: NVMRC=$(cat .nvmrc)
+      run: echo "##[set-output name=NVMRC;]$(cat .nvmrc)"
+      id: nvm
 
-    - name: Use Node.js ${NVMRC}
+    - name: Echo .NVMRC
+      run: echo "use node.js ${NVMRC}"
+
+    - name: Use Node.js (.nvmrc)
       uses: actions/setup-node@v1
       with:
-        node-version: ${NVMRC}
+        node-version: "${{ steps.nvm.outputs.NVMRC }}"
     - run: npm ci
     - run: npm run type-check
