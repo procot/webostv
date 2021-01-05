@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "npm run tslint && npm run type-check && npm run dtslint",
-    "dtslint": "dtslint",
+    "dtslint": "dtslint --localTs node_modules/typescript/lib",
     "tslint": "tslint -p ./tsconfig.json */*.ts",
     "type-check": "tsc --noEmit -p ./tsconfig.json"
   },
