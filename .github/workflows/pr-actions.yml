@@ -19,9 +19,6 @@ jobs:
       run: echo "##[set-output name=NVMRC;]$(cat .nvmrc)"
       id: nvm
 
-    - name: Echo .NVMRC
-      run: echo "use node.js ${NVMRC}"
-
     - name: Use Node.js (.nvmrc)
       uses: actions/setup-node@v1
       with:
@@ -40,9 +37,6 @@ jobs:
       run: echo "##[set-output name=NVMRC;]$(cat .nvmrc)"
       id: nvm
 
-    - name: Echo .NVMRC
-      run: echo "use node.js ${NVMRC}"
-
     - name: Use Node.js (.nvmrc)
       uses: actions/setup-node@v1
       with:
@@ -60,9 +54,6 @@ jobs:
     - name: Read .nvmrc
       run: echo "##[set-output name=NVMRC;]$(cat .nvmrc)"
       id: nvm
-
-    - name: Echo .NVMRC
-      run: echo "use node.js ${NVMRC}"
 
     - name: Use Node.js (.nvmrc)
       uses: actions/setup-node@v1
