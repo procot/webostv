@@ -6,7 +6,7 @@ This the package contain a source code of the [webOSTV.js library](http://webost
 
 # Library version
 
-A source code and a typings presents for library version 1.2.3
+A source code and a typings presents for library version 1.2.4
 
 ## Install
 
