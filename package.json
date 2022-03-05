@@ -1,6 +1,6 @@
 {
   "name": "@procot/webostv",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "description": "Source code of the webOSTV.js library",
   "main": "index.js",
   "scripts": {
