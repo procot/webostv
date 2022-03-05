@@ -207,11 +207,11 @@ function test_connection_getStatus_wired(wiredStatus: WebOSTV.WiredStatus) {
     wiredStatus.interfaceName;
     // $ExpectType string | undefined
     wiredStatus.ipAddress;
-    // $ExpectType "Manual" | "dhcp" | undefined
+    // $ExpectType ConnectionIpMethod | undefined
     wiredStatus.method;
     // $ExpectType string | undefined
     wiredStatus.netmask;
-    // $ExpectType "yes" | "no" | undefined
+    // $ExpectType ConnectionOnInternet | undefined
     wiredStatus.onInternet;
     // $ExpectType ConnectionState
     wiredStatus.state;
@@ -232,11 +232,11 @@ function test_connection_getStatus_wifi(wifiStatus: WebOSTV.WifiStatus) {
     wifiStatus.ipAddress;
     // $ExpectType boolean | undefined
     wifiStatus.isWakeOnWiFiEnabled;
-    // $ExpectType "Manual" | "dhcp" | undefined
+    // $ExpectType ConnectionIpMethod | undefined
     wifiStatus.method;
     // $ExpectType string | undefined
     wifiStatus.netmask;
-    // $ExpectType "yes" | "no" | undefined
+    // $ExpectType ConnectionOnInternet | undefined
     wifiStatus.onInternet;
     // $ExpectType string | undefined
     wifiStatus.ssid;
@@ -263,7 +263,7 @@ function test_connection_getStatus_wifiDirect_WifiPeer(wifiPeerInfo: WebOSTV.Wif
     wifiPeerInfo.deviceName;
     // $ExpectType boolean
     wifiPeerInfo.groupOwner;
-    // $ExpectType "true" | "false" | undefined
+    // $ExpectType WifiPeerInfoInvited | undefined
     wifiPeerInfo.invited;
     // $ExpectType string | undefined
     wifiPeerInfo.peerIp;
