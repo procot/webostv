@@ -17,6 +17,10 @@ function test_deviceInfo() {
         deviceInfo.versionMajor; // $ExpectType number
         deviceInfo.versionMinor; // $ExpectType number
         deviceInfo.uhd8K; // $ExpectType boolean | undefined
+        deviceInfo.oled; // $ExpectType boolean | undefined
+        deviceInfo.hdr10; // $ExpectType boolean | undefined
+        deviceInfo.dolbyVision; // $ExpectType boolean | undefined
+        deviceInfo.dolbyAtmos; // $ExpectType boolean | undefined
     });
 }
 
@@ -60,7 +64,7 @@ function test_keyboard_isShowing() {
 }
 
 function test_libVersion() {
-    // $ExpectType "1.2.3"
+    // $ExpectType "1.2.4"
     webOS.libVersion;
 }
 

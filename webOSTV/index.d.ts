@@ -5,7 +5,7 @@ declare namespace WebOSTV {
         /**
          * A member representing the build version of the webOSTV.js library
          */
-        readonly libVersion: '1.2.3';
+        readonly libVersion: '1.2.4';
         /**
          * A member representing the platform identification of webOS variants
          */
@@ -285,6 +285,36 @@ declare namespace WebOSTV {
          * - false: The device does not support 8K UHD resolution.
          */
         uhd8K?: boolean;
+        /**
+         * Indicates whether the display type of device is OLED or not.
+         * - true: The display type is OLED.
+         * - false: The display type is LCD.
+         * On the previous version of webOS TV that does not support this property, return undefined.
+         */
+        oled?: boolean;
+        /**
+         * The size of DDR DRAM in Bytes. For example, if the size of DDR DRAM is 3G, the return value is '3G'.
+         * On the previous version of webOS TV that does not support this property, return undefined.
+         */
+        ddrSize?: string;
+        /**
+         * Indicate whether the device supports HDR10.
+         * true: The device supports HDR10.
+         * false: The device does not support HDR10.
+         */
+        hdr10?: boolean;
+        /**
+         * Indicate whether the device supports Dolby Vision.
+         * true: The device supports Dolby Vision.
+         * false: The device does not support Dolby Vision.
+         */
+        dolbyVision?: boolean;
+        /**
+         * Indicate whether the device supports Dolby Atmos.
+         * true: The device supports Dolby Atmos.
+         * false: The device does not support Dolby Atmos.
+         */
+        dolbyAtmos?: boolean;
     }
 
     interface ServiceRequestParams<
