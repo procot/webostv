@@ -5,7 +5,7 @@ declare namespace WebOSTV {
         /**
          * A member representing the build version of the webOSTV.js library
          */
-        readonly libVersion: '1.2.4';
+        readonly libVersion: '1.2.11';
         /**
          * A member representing the platform identification of webOS variants
          */
@@ -315,6 +315,25 @@ declare namespace WebOSTV {
          * false: The device does not support Dolby Atmos.
          */
         dolbyAtmos?: boolean;
+        brandName?: string;
+        /**
+         * The manufacturer of the TV.
+         */
+        manufacturer?: string;
+        /**
+         * The maker of the TV mainboard.
+         */
+        mainboardMaker?: string;
+        /**
+         * The business type of the platform.
+         */
+        platformBizType: string;
+        /**
+         * Indicates whether the device has a TV tuner.
+         * - true: The device has a TV tuner.
+         * - false: The device does not have a TV tuner.
+         */
+        tuner: boolean;
     }
 
     interface ServiceRequestParams<
